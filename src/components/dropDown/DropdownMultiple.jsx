@@ -70,27 +70,14 @@ class DropdownMultiple extends Component {
   };
 
   /**
- * @description When user will click the check box based on user action toggle the item.
- * @param {Number} Id of selected item.
+ * @description When user will click the check box based on user action toggle the item. *
  * @param {String} key key of list. if user is searching and item is slected the update both the list.
+ * @param {Object} selectedList of selected items in dropdown.
+ * @param {Object} mainList to set data in sync with filtered data.
  */
-  toggleSelected = (id, key) => {
-    let tempList = JSON.parse (JSON.stringify (this.state[key])),
-      mainList = JSON.parse (JSON.stringify (this.state['mainList']));
-    mainList[id].selected = !mainList[id].selected;
-    // check if search box is empty or not
-    if (this.state.filtered) {
-      tempList.filter ((item, index) => {
-        if (id === item.id) {
-          tempList[index].selected = !tempList[index].selected;
-        }
-      });
-    } else {
-      tempList[id].selected = !tempList[id].selected;
-    }
-
+  toggleSelected = (key,selectedList,mainList) => {   
     this.setState (() => ({
-        [key]: tempList,
+        [key]: selectedList,
         mainList: mainList,
       }),() => {
         this.updateTitle ();
@@ -182,6 +169,9 @@ class DropdownMultiple extends Component {
                     item={item}
                     toggleItem={this.toggleSelected}
                     updateTitles={this.updateTitles}
+                    list={this.state.list}
+                    mainList= {this.state.mainList}
+                    filtered= {this.state.filtered}
                   />                 
                 </div>
               ))}
