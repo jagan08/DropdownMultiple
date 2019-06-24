@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -37,7 +35,77 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+#Installation
+npm install 
+Make sure that you inserted the following link tag between the <head></head> tags inside /public/index.html of your react project. This is required for the FontAwesome component that the package depends on.
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 
+Usage:-
+
+  const list = [{
+            id: 0,
+            title: 'Jacks or Better Double up',
+            selected: false,
+            key: 'list'
+        },
+        {
+            id: 1,
+            title: 'Creature from the black Lagoon',
+            selected: false,
+            key: 'list'
+        },
+        {
+            id: 2,
+            title: 'Go bananas',
+            selected: false,
+            key: 'list'
+        },
+        {
+            id: 3,
+            title: 'Ghost pirates',
+            selected: false,
+            key: 'list'
+        },
+        {
+            id: 4,
+            title: 'Berryburst',
+            selected: false,
+            key: 'list'
+        },
+        {
+            id: 5,
+            title: 'Butterfly stax',
+            selected: false,
+            key: 'list'
+        },
+        {
+            id: 6,
+            title: 'Arabian Nights',
+            selected: false,
+            key: 'list'
+        },
+        {
+            id: 7,
+            title: 'Excalibur',
+            selected: false,
+            key: 'list'
+        }
+        ]
+
+Finally use the components as follows:
+For custom styling
+  let options = [{
+            width: '70%',
+            marginLeft: '15%',
+            placeHolderForSearchFilter: "Search for a games..."
+        }]
+<DropdownMultiple
+  titleHelper="Location"
+  title="Select location"
+  list={this.state.list}
+  options={options}
+/>
 
 

@@ -12,6 +12,7 @@ class App extends Component {
      * @description Initilize the data for dropdown component
      */
     componentWillMount() {
+        // can call rest api for data  i am using static data.
         const list = [{
             id: 0,
             title: 'Jacks or Better Double up',
