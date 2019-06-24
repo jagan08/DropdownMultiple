@@ -85,34 +85,36 @@ class DropdownMultiple extends Component {
     });
   };
 
-    /**
+  /**
  * @description When user will click the check box based on user action toggle the item.
  * @param {Number} Id of selected item.
  * @param {String} key key of list. if user is searching and item is slected the update both the list.
  */
-toggleSelected = (id, key) => {
-  let tempList = JSON.parse (JSON.stringify (this.state[key])),
-    mainList = JSON.parse (JSON.stringify (this.state['mainList']));
-  mainList[id].selected = !mainList[id].selected;
-  // check if search box is empty or not
-  if (this.state.filtered) {
-    tempList.filter ((item, index) => {
-      if (id === item.id) {
-        tempList[index].selected = !tempList[index].selected;
-      }
-    });
-  } else {
-    tempList[id].selected = !tempList[id].selected;
-  }
-
-  this.setState (() => ({
-      [key]: tempList,
-      mainList: mainList,
-    }),() => {
-      this.updateTitle ();
+  toggleSelected = (id, key) => {
+    let tempList = JSON.parse (JSON.stringify (this.state[key])),
+      mainList = JSON.parse (JSON.stringify (this.state['mainList']));
+    mainList[id].selected = !mainList[id].selected;
+    // check if search box is empty or not
+    if (this.state.filtered) {
+      tempList.filter ((item, index) => {
+        if (id === item.id) {
+          tempList[index].selected = !tempList[index].selected;
+        }
+      });
+    } else {
+      tempList[id].selected = !tempList[id].selected;
     }
-  );
-};
+
+    this.setState (
+      () => ({
+        [key]: tempList,
+        mainList: mainList,
+      }),
+      () => {
+        this.updateTitle ();
+      }
+    );
+  };
 
   /**
    * @description Apply condtions on title check whether the games are selected or not,
@@ -155,7 +157,7 @@ toggleSelected = (id, key) => {
    * @description Render the dropdown component
    */
   render () {
-    const {list} = this.state;  
+    const {list} = this.state;
     const {options} = this.props;
     const {listOpen, headerTitle} = this.state;
     const containerStyle = {
@@ -165,7 +167,7 @@ toggleSelected = (id, key) => {
     return (
       <div style={containerStyle}>
         <div className="dd-wrapper">
-          <div className="dd-header" onClick={() => this.toggleList()}>
+          <div className="dd-header" onClick={() => this.toggleList ()}>
             <div className="dd-header-title">{headerTitle}</div>
             {listOpen
               ? <FontAwesome name="angle-up" size="2x" />
@@ -182,8 +184,8 @@ toggleSelected = (id, key) => {
                   <CheckboxMultipleSelect
                     item={item}
                     toggleItem={this.toggleSelected}
-                    updateTitles={this.updateTitles}                  
-                  />                 
+                    updateTitles={this.updateTitles}
+                  />
                 </div>
               ))}
             </ul>}
