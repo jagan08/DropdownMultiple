@@ -28,8 +28,7 @@ describe("DropdownMultiple Componenet", () => {
     const wrapper = shallow(<DropdownMultiple options={options} />);
     expect(wrapper.exists()).toBe(true);
     expect(wrapper).toMatchSnapshot();
-  })
-
+  });
 })
 
 describe("applyConditionsOnTitle", () => {
@@ -75,7 +74,7 @@ describe("applyConditionsOnTitle", () => {
     const titleValue = instance.applyConditionsOnTitle();
     expect(titleValue.headerTitle).toBe('2 items');
   });
-})
+});
 
 
 describe("handleChange", () => {
@@ -92,5 +91,22 @@ describe("handleChange", () => {
       key: 'list'
   }]);
   })
+  test("when search box is empty then item state should be updated and item list should not be filtered", () => {
+    let obj = {target :{ value: ''}}
+    const wrapper = shallow(<DropdownMultiple options={options}/>);
+    const instance = wrapper.instance();
+    wrapper.setState({ mainList: list });
+    instance.handleChange(obj);
+    expect(wrapper.state('list')).toMatchObject(list);
+  })
+});
 
+describe("close ", () => {
+  test("it should close the dropdwon and will set the listOpen to false", () => {
+    const wrapper = shallow(<DropdownMultiple options={options}/>);
+    const instance = wrapper.instance();    
+    instance.close();
+    expect(wrapper.state('listOpen')).toBe(false);
+  });
 })
+
