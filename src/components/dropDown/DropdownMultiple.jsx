@@ -70,22 +70,6 @@ class DropdownMultiple extends Component {
   };
 
   /**
- * @description When user will click the check box based on user action toggle the item. *
- * @param {String} key key of list. if user is searching and item is slected the update both the list.
- * @param {Object} selectedList of selected items in dropdown.
- * @param {Object} mainList to set data in sync with filtered data.
- */
-  toggleSelected = (key,selectedList,mainList) => {   
-    this.setState (() => ({
-        [key]: selectedList,
-        mainList: mainList,
-      }),() => {
-        this.updateTitle ();
-      }
-    );
-  };
-
-  /**
    * @description Remove the click listener for dropdown.
    */
   componentWillUnmount () {
@@ -100,6 +84,35 @@ class DropdownMultiple extends Component {
       listOpen: false,
     });
   };
+
+    /**
+ * @description When user will click the check box based on user action toggle the item.
+ * @param {Number} Id of selected item.
+ * @param {String} key key of list. if user is searching and item is slected the update both the list.
+ */
+toggleSelected = (id, key) => {
+  let tempList = JSON.parse (JSON.stringify (this.state[key])),
+    mainList = JSON.parse (JSON.stringify (this.state['mainList']));
+  mainList[id].selected = !mainList[id].selected;
+  // check if search box is empty or not
+  if (this.state.filtered) {
+    tempList.filter ((item, index) => {
+      if (id === item.id) {
+        tempList[index].selected = !tempList[index].selected;
+      }
+    });
+  } else {
+    tempList[id].selected = !tempList[id].selected;
+  }
+
+  this.setState (() => ({
+      [key]: tempList,
+      mainList: mainList,
+    }),() => {
+      this.updateTitle ();
+    }
+  );
+};
 
   /**
    * @description Apply condtions on title check whether the games are selected or not,
@@ -142,9 +155,7 @@ class DropdownMultiple extends Component {
    * @description Render the dropdown component
    */
   render () {
-    const {list} = this.state;
-    const {mainList} = this.state;
-    const {filtered} = this.state;
+    const {list} = this.state;  
     const {options} = this.props;
     const {listOpen, headerTitle} = this.state;
     const containerStyle = {
@@ -171,10 +182,7 @@ class DropdownMultiple extends Component {
                   <CheckboxMultipleSelect
                     item={item}
                     toggleItem={this.toggleSelected}
-                    updateTitles={this.updateTitles}
-                    list={list}
-                    mainList= {mainList}
-                    filtered= {filtered}
+                    updateTitles={this.updateTitles}                  
                   />                 
                 </div>
               ))}

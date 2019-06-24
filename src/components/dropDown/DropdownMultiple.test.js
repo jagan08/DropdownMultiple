@@ -110,3 +110,46 @@ describe("close ", () => {
   });
 })
 
+describe("toggleSelected", () => {
+  let filtered = true,
+    list= [{
+      id: 0,
+      title: 'Jacks',
+      selected: true,
+      key: 'list'
+  }
+ ],
+updatedList= [{
+  id: 0,
+  title: 'Jacks',
+  selected: false,
+  key: 'list'
+}
+],item={'selected': true},
+ options = [{
+  width: '70%',
+  marginLeft: '15%',
+  placeHolderForSearchFilter: "Search for a games..."
+}];
+
+  test("when user will select the item, state should be updated", () => { 
+
+    const wrapper = shallow(<DropdownMultiple item={item} toggleItem={function(){}}  options={options}/>);
+    const instance = wrapper.instance();
+    wrapper.setState({ mainList: list });
+    wrapper.setState({ list: list });
+    wrapper.setState({ filtered: true });
+    instance.toggleSelected(0,'list');
+    expect(wrapper.state('list')).toMatchObject(updatedList);
+  })
+
+  test("when user will deselect the item, state should be updated and search box is empty", () => {
+    const wrapper = shallow(<DropdownMultiple item={item} toggleItem={function(){}}  options={options}/>);
+    const instance = wrapper.instance();
+    wrapper.setState({ mainList: list });
+    wrapper.setState({ list: list });
+    wrapper.setState({ filtered: false });
+    instance.toggleSelected(0,'list');
+    expect(wrapper.state('list')).toMatchObject(updatedList);
+  })
+});
