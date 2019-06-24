@@ -111,7 +111,7 @@ class DropdownMultiple extends Component {
         mainList: mainList,
       }),
       () => {
-        this.updateTitle ();
+        this.updateTitle();
       }
     );
   };
@@ -121,7 +121,7 @@ class DropdownMultiple extends Component {
    *  and based on that change the title of dropdown
    */
   applyConditionsOnTitle () {
-    const count = this.state.list.filter (function (a) {
+    const count = this.state.mainList.filter (function (a) {
       return a.selected;
     }).length;
     if (count === 0) {
@@ -137,7 +137,7 @@ class DropdownMultiple extends Component {
    * @description update Title of dropdown when user will select the ganmes.
    */
   updateTitle = () => {
-    let obj = this.applyConditionsOnTitle ();
+    let obj = this.applyConditionsOnTitle();
     this.setState ({
       headerTitle: obj.headerTitle,
     });
