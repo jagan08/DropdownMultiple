@@ -149,6 +149,7 @@ class DropdownMultiple extends Component {
     const {listOpen, headerTitle} = this.state;
     const containerStyle = {
       width: this.props.options[0].width,
+      marginLeft: this.props.options[0].marginLeft,
     };
     return (
       <div style={containerStyle}>

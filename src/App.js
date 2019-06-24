@@ -70,7 +70,8 @@ class App extends Component {
      */
     render() {
         let options = [{
-            width: '100%',
+            width: '80%',
+            marginLeft: '15%',
             placeHolderForSearchFilter: "Search for a games..."
         }]
         return (<div className="App" >

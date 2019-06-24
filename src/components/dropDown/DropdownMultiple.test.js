@@ -8,54 +8,18 @@ Enzyme.configure({ adapter: new Adapter() });
 let options = [{
   width: '100%',
   placeHolderForSearchFilter: "foo..."
-}];
-let list= [{
+}],
+list= [{
     id: 0,
     title: 'Jacks or Better Double up',
     selected: false,
     key: 'list'
 },
 {
-    id: 1,
-    title: 'Creature from the black Lagoon',
-    selected: false,
-    key: 'list'
-},
-{
-    id: 2,
-    title: 'Go bananas',
-    selected: false,
-    key: 'list'
-},
-{
-    id: 3,
-    title: 'Ghost pirates',
-    selected: false,
-    key: 'list'
-},
-{
-    id: 4,
-    title: 'Berryburst',
-    selected: false,
-    key: 'list'
-},
-{
-    id: 5,
-    title: 'Butterfly stax',
-    selected: false,
-    key: 'list'
-},
-{
-    id: 6,
-    title: 'Arabian Nights',
-    selected: false,
-    key: 'list'
-},
-{
-    id: 7,
-    title: 'Excalibur',
-    selected: false,
-    key: 'list'
+  id: 1,
+  title: 'Creature from the black Lagoon',
+  selected: false,
+  key: 'list'
 }
 ];
 
@@ -84,6 +48,7 @@ describe("applyConditionsOnTitle", () => {
       selected: true,
       key: 'list'
   }];
+
     const wrapper = shallow(<DropdownMultiple options={options}  title="foo" titleHelper="item"/>);
     wrapper.setState({ list: list });
     const instance = wrapper.instance();
@@ -110,4 +75,22 @@ describe("applyConditionsOnTitle", () => {
     const titleValue = instance.applyConditionsOnTitle();
     expect(titleValue.headerTitle).toBe('2 items');
   });
+})
+
+
+describe("handleChange", () => {
+  test("when user will search the item state should be updated and item list should be filtered", () => {
+    let obj = {target :{ value: 'j'}}
+    const wrapper = shallow(<DropdownMultiple options={options} />);
+    const instance = wrapper.instance();
+    wrapper.setState({ list: list });
+    instance.handleChange(obj);
+    expect(wrapper.state('list')).toMatchObject([{
+      id: 0,
+      title: 'Jacks or Better Double up',
+      selected: false,
+      key: 'list'
+  }]);
+  })
+
 })
