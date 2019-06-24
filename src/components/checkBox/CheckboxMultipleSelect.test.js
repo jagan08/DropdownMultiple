@@ -6,7 +6,7 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({adapter: new Adapter()});
 
 
-describe("App Componenet", () => {
+describe("CheckboxMultipleSelect Componenet", () => {
     const item = {
         id: 0,
         title: 'Jacks or Better Double up',

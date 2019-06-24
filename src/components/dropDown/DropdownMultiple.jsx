@@ -143,6 +143,8 @@ class DropdownMultiple extends Component {
    */
   render () {
     const {list} = this.state;
+    const {mainList} = this.state;
+    const {filtered} = this.state;
     const {options} = this.props;
     const {listOpen, headerTitle} = this.state;
     const containerStyle = {
@@ -169,9 +171,9 @@ class DropdownMultiple extends Component {
                     item={item}
                     toggleItem={this.toggleSelected}
                     updateTitles={this.updateTitles}
-                    list={this.state.list}
-                    mainList= {this.state.mainList}
-                    filtered= {this.state.filtered}
+                    list={list}
+                    mainList= {mainList}
+                    filtered= {filtered}
                   />                 
                 </div>
               ))}

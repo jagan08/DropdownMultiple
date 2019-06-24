@@ -75,7 +75,7 @@ class App extends Component {
         }]
         return (<div className="App" >
             <div className="wrapper" >           
-                <DropdownMultiple titleHelper="Games"
+                <DropdownMultiple titleHelper="Game"
                     title="Select Games"
                     list={this.state.list}
                     options={options} /></div >
