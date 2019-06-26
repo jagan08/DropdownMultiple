@@ -73,7 +73,7 @@ Usage:-
         }        
         ]
 
-# Finally use the components as follows:
+# Finally use the components styiling:
 For custom styling
   let options = [{
             width: '70%',
@@ -81,7 +81,7 @@ For custom styling
             placeHolderForSearchFilter: "Search for a games..."
         }]
 
-
+# Finally use the components as follows:
 <DropdownMultiple
   titleHelper="Location"
   title="Select location"
