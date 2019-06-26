@@ -46,61 +46,45 @@ Usage:-
 
   const list = [{
             id: 0,
-            title: 'Jacks or Better Double up',
+            title: 'foo',
             selected: false,
             key: 'list'
         },
         {
             id: 1,
-            title: 'Creature from the black Lagoon',
+            title: 'foo1',
             selected: false,
             key: 'list'
         },
         {
             id: 2,
-            title: 'Go bananas',
+            title: 'foo2',
             selected: false,
             key: 'list'
         },
         {
             id: 3,
-            title: 'Ghost pirates',
+            title: 'foo3',
             selected: false,
             key: 'list'
         },
         {
             id: 4,
-            title: 'Berryburst',
+            title: 'foo4',
             selected: false,
             key: 'list'
-        },
-        {
-            id: 5,
-            title: 'Butterfly stax',
-            selected: false,
-            key: 'list'
-        },
-        {
-            id: 6,
-            title: 'Arabian Nights',
-            selected: false,
-            key: 'list'
-        },
-        {
-            id: 7,
-            title: 'Excalibur',
-            selected: false,
-            key: 'list'
-        }
+        }        
         ]
 
-Finally use the components as follows:
+# Finally use the components as follows:
 For custom styling
   let options = [{
             width: '70%',
             marginLeft: '15%',
             placeHolderForSearchFilter: "Search for a games..."
         }]
+
+        
 <DropdownMultiple
   titleHelper="Location"
   title="Select location"
